@@ -7,6 +7,7 @@ function App() {
   let post = "울산 돈까스 맛집";
   let [title, setTitle] = useState(["롤토체스 덱 추천", "오늘 점심메뉴 추천", "React 독학",]);
   let [likeIt, setLikeIt] = useState(0);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -37,9 +38,24 @@ function App() {
       </div>
 
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4 onClick={ () => { setModal(!modal)}}>{title[2]}</h4>
         <p>9월 2일 발행</p>
       </div>
+      
+      {
+        modal == true ? <Modal/> : null
+      }
+      
+    </div>
+  );
+}
+
+function Modal(){
+  return(
+    <div className="modal"> 
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
     </div>
   );
 }
